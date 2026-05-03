@@ -32,7 +32,7 @@ export function WarehouseStatus({ warehouses: initialWarehouses }: WarehouseStat
   }, []);
 
   return (
-    <div className="premium-card p-10 animate-in">
+    <div className="premium-card p-6 md:p-10 animate-in">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-6">
         <div>
           <div className="flex items-center gap-2 mb-3">
@@ -40,7 +40,7 @@ export function WarehouseStatus({ warehouses: initialWarehouses }: WarehouseStat
             <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Network Status</span>
           </div>
           <div className="flex items-center gap-4">
-            <h2 className="text-3xl font-bold text-slate-900 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
               Global Node <span className="text-gradient">Distribution</span>
             </h2>
             {isUpdating && (

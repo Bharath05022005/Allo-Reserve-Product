@@ -141,7 +141,6 @@ export function ReservationDetail({ reservationId }: Props) {
     });
   }, []);
 
-  // ── Loading state ────────────────────────────────────────────────────────
   if (!reservation && !fetchError) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -153,13 +152,12 @@ export function ReservationDetail({ reservationId }: Props) {
     );
   }
 
-  // ── Error state ──────────────────────────────────────────────────────────
   if (fetchError || !reservation) {
     return (
       <div className="min-h-screen flex items-center justify-center px-4">
         <Card className="max-w-md w-full text-center p-8">
           <AlertCircle className="h-12 w-12 text-red-400 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-white mb-2">
+          <h2 className="text-xl font-bold text-slate-900 mb-2">
             Reservation Not Found
           </h2>
           <p className="text-slate-400 text-sm mb-6">
@@ -186,10 +184,10 @@ export function ReservationDetail({ reservationId }: Props) {
           <div className="flex items-center gap-3 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5">
             <CheckCircle2 className="h-8 w-8 text-emerald-400 shrink-0" />
             <div>
-              <p className="font-bold text-emerald-300 text-lg">
+              <p className="font-bold text-emerald-700 text-lg">
                 Order Confirmed
               </p>
-              <p className="text-emerald-400/70 text-sm">
+              <p className="text-emerald-600/70 text-sm">
                 Stock permanently reduced. Thank you for your purchase!
               </p>
             </div>
@@ -200,10 +198,10 @@ export function ReservationDetail({ reservationId }: Props) {
           <div className="flex items-center gap-3 rounded-2xl border border-slate-500/30 bg-slate-500/10 p-5">
             <XCircle className="h-8 w-8 text-slate-400 shrink-0" />
             <div>
-              <p className="font-bold text-slate-300 text-lg">
+              <p className="font-bold text-slate-700 text-lg">
                 Reservation Cancelled
               </p>
-              <p className="text-slate-400 text-sm">
+              <p className="text-slate-500 text-sm">
                 Stock has been released back to inventory.
               </p>
             </div>
@@ -214,10 +212,10 @@ export function ReservationDetail({ reservationId }: Props) {
           <div className="flex items-center gap-3 rounded-2xl border border-red-500/30 bg-red-500/10 p-5">
             <AlertCircle className="h-8 w-8 text-red-400 shrink-0 animate-pulse" />
             <div>
-              <p className="font-bold text-red-300 text-lg">
+              <p className="font-bold text-red-700 text-lg">
                 Reservation Expired
               </p>
-              <p className="text-red-400/70 text-sm">
+              <p className="text-red-500/70 text-sm">
                 Your 10-minute hold has expired. Stock has been released.
               </p>
             </div>
@@ -230,13 +228,11 @@ export function ReservationDetail({ reservationId }: Props) {
 
   return (
     <div className="relative min-h-screen">
-      {/* Background */}
       <div className="fixed inset-0 -z-10 bg-[#f8f9fc]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(99,102,241,0.05),rgba(255,255,255,0))]" />
       </div>
 
       <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6">
-        {/* Back link */}
         <Link
           href="/"
           className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-900 transition-colors mb-8 group"
@@ -245,7 +241,6 @@ export function ReservationDetail({ reservationId }: Props) {
           Back to Products
         </Link>
 
-        {/* Header */}
         <div className="mb-6">
           <div className="flex items-center gap-3 mb-1">
             <ShoppingBag className="h-6 w-6 text-indigo-600" />
@@ -259,7 +254,6 @@ export function ReservationDetail({ reservationId }: Props) {
           </div>
         </div>
 
-        {/* Status badge */}
         <div className="mb-6">
           {uiStatus === "CONFIRMED" && (
             <Badge variant="success" className="text-sm px-3 py-1">
@@ -283,14 +277,12 @@ export function ReservationDetail({ reservationId }: Props) {
           )}
         </div>
 
-        {/* Status banner */}
         {uiStatus !== "PENDING" && (
           <div className="mb-6">
             <StatusBanner />
           </div>
         )}
 
-        {/* Countdown (only for PENDING) */}
         {uiStatus === "PENDING" && (
           <div className="mb-6">
             <CountdownTimer
@@ -300,14 +292,12 @@ export function ReservationDetail({ reservationId }: Props) {
           </div>
         )}
 
-        {/* Reservation info card */}
         <Card className="mb-6 bg-white rounded-3xl border-slate-200 shadow-sm overflow-hidden">
           <CardHeader className="border-b border-slate-50">
             <CardTitle className="text-xl font-black text-slate-900">Order Summary</CardTitle>
             <CardDescription className="text-slate-500 font-medium">Review your reservation before confirming</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4 pt-6">
-            {/* Product */}
             <div className="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50/50 p-4">
               <div className="h-16 w-16 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
                 {reservation.product.imageUrl ? (
@@ -332,7 +322,6 @@ export function ReservationDetail({ reservationId }: Props) {
               </div>
             </div>
 
-            {/* Warehouse */}
             <div className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50/50 p-4">
               <div className="h-10 w-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm">
                 <Warehouse className="h-5 w-5 text-indigo-600" />
@@ -347,8 +336,7 @@ export function ReservationDetail({ reservationId }: Props) {
               </div>
             </div>
 
-            {/* Quantity & Total */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="rounded-2xl border border-slate-100 bg-slate-50/50 p-4">
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Quantity</p>
                 <p className="text-2xl font-black text-slate-900">
@@ -366,7 +354,6 @@ export function ReservationDetail({ reservationId }: Props) {
               </div>
             </div>
 
-            {/* Metadata */}
             <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest pt-2">
               <Calendar className="h-3 w-3" />
               Created {formatDate(reservation.createdAt)}
@@ -374,7 +361,6 @@ export function ReservationDetail({ reservationId }: Props) {
           </CardContent>
         </Card>
 
-        {/* Actions (only PENDING) */}
         {uiStatus === "PENDING" && (
           <div className="grid grid-cols-2 gap-4">
             <Button
@@ -402,7 +388,6 @@ export function ReservationDetail({ reservationId }: Props) {
           </div>
         )}
 
-        {/* Post-action CTA */}
         {(uiStatus === "CONFIRMED" ||
           uiStatus === "RELEASED" ||
           uiStatus === "EXPIRED") && (

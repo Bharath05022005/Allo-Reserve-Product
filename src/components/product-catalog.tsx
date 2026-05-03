@@ -13,19 +13,19 @@ export function ProductCatalog({ products }: ProductCatalogProps) {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   return (
-    <div className="space-y-10 animate-in">
+    <div className="space-y-6 md:space-y-10 animate-in">
       {/* Header with Toggle */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
         <div>
           <div className="flex items-center gap-2 mb-2">
             <span className="h-px w-8 bg-primary" />
             <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Inventory Hub</span>
           </div>
-          <h1 className="text-4xl font-bold text-slate-900 tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
             Product <span className="text-gradient">Catalog</span>
           </h1>
-          <p className="text-base text-slate-500 mt-3 max-w-xl leading-relaxed">
-            Manage your global inventory with atomic precision. Real-time stock updates across all warehouses with built-in concurrency protection.
+          <p className="text-sm md:text-base text-slate-500 mt-3 max-w-xl leading-relaxed">
+            Manage your global inventory with atomic precision. Real-time stock updates across all warehouses.
           </p>
         </div>
 

@@ -33,23 +33,23 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-4rem)]">
+    <div className="flex flex-col md:flex-row min-h-[calc(100vh-4rem)]">
       <Sidebar />
-      <main className="flex-1 p-8 lg:p-12 bg-[#f8f9fc]">
+      <main className="flex-1 p-6 md:p-8 lg:p-12 bg-[#f8f9fc]">
         <div className="max-w-4xl mx-auto animate-page-in">
-          <div className="mb-10">
-            <h1 className="text-4xl font-black text-slate-900 tracking-tight">
+          <div className="mb-8 md:mb-10">
+            <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
               Settings
             </h1>
-            <p className="text-sm text-slate-500 mt-2 font-medium">
+            <p className="text-xs md:text-sm text-slate-500 mt-2 font-medium">
               Configure your dashboard preferences and core system behaviors.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8">
+          <div className="grid grid-cols-1 gap-6 md:gap-8">
             {/* Functionality Models */}
-            <section className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-              <div className="flex items-center gap-3 mb-8">
+            <section className="bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm">
+              <div className="flex items-center gap-3 mb-6 md:mb-8">
                 <div className="h-10 w-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
                   <Zap className="h-5 w-5" />
                 </div>
@@ -65,8 +65,8 @@ export default function SettingsPage() {
 
               <div className="space-y-4">
                 {/* Live Node Polling */}
-                <div className="flex items-center justify-between p-5 rounded-2xl border border-slate-100 bg-slate-50/30 hover:bg-slate-50 transition-colors">
-                  <div className="flex items-center gap-4">
+                <div className="flex items-center justify-between p-4 md:p-5 rounded-2xl border border-slate-100 bg-slate-50/30 hover:bg-slate-50 transition-colors">
+                  <div className="flex items-center gap-3 md:gap-4">
                     <Database className="h-5 w-5 text-slate-400" />
                     <div>
                       <p className="text-sm font-black text-slate-900">Live Node Polling</p>
@@ -75,15 +75,15 @@ export default function SettingsPage() {
                   </div>
                   <button 
                     onClick={() => toggle('livePolling')}
-                    className={`h-7 w-12 rounded-full transition-colors relative flex items-center px-1 ${config.livePolling ? "bg-emerald-500" : "bg-slate-200"}`}
+                    className={`h-7 w-12 rounded-full transition-colors relative flex items-center px-1 shrink-0 ${config.livePolling ? "bg-emerald-500" : "bg-slate-200"}`}
                   >
                     <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${config.livePolling ? "translate-x-5" : "translate-x-0"}`} />
                   </button>
                 </div>
 
                 {/* Idempotency Protection */}
-                <div className="flex items-center justify-between p-5 rounded-2xl border border-slate-100 bg-slate-50/30 hover:bg-slate-50 transition-colors">
-                  <div className="flex items-center gap-4">
+                <div className="flex items-center justify-between p-4 md:p-5 rounded-2xl border border-slate-100 bg-slate-50/30 hover:bg-slate-50 transition-colors">
+                  <div className="flex items-center gap-3 md:gap-4">
                     <Shield className="h-5 w-5 text-slate-400" />
                     <div>
                       <p className="text-sm font-black text-slate-900">Idempotency Protection</p>
@@ -92,15 +92,15 @@ export default function SettingsPage() {
                   </div>
                   <button 
                     onClick={() => toggle('idempotency')}
-                    className={`h-7 w-12 rounded-full transition-colors relative flex items-center px-1 ${config.idempotency ? "bg-emerald-500" : "bg-slate-200"}`}
+                    className={`h-7 w-12 rounded-full transition-colors relative flex items-center px-1 shrink-0 ${config.idempotency ? "bg-emerald-500" : "bg-slate-200"}`}
                   >
                     <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${config.idempotency ? "translate-x-5" : "translate-x-0"}`} />
                   </button>
                 </div>
 
                 {/* Global Access Button Control */}
-                <div className="flex items-center justify-between p-5 rounded-2xl border border-slate-100 bg-slate-50/30 hover:bg-slate-50 transition-colors">
-                  <div className="flex items-center gap-4">
+                <div className="flex items-center justify-between p-4 md:p-5 rounded-2xl border border-slate-100 bg-slate-50/30 hover:bg-slate-50 transition-colors">
+                  <div className="flex items-center gap-3 md:gap-4">
                     <Lock className="h-5 w-5 text-slate-400" />
                     <div>
                       <p className="text-sm font-black text-slate-900">Global Access Buttons</p>
@@ -109,7 +109,7 @@ export default function SettingsPage() {
                   </div>
                   <button 
                     onClick={() => toggle('globalAccess')}
-                    className={`h-7 w-12 rounded-full transition-colors relative flex items-center px-1 ${config.globalAccess ? "bg-emerald-500" : "bg-slate-200"}`}
+                    className={`h-7 w-12 rounded-full transition-colors relative flex items-center px-1 shrink-0 ${config.globalAccess ? "bg-emerald-500" : "bg-slate-200"}`}
                   >
                     <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${config.globalAccess ? "translate-x-5" : "translate-x-0"}`} />
                   </button>
@@ -118,8 +118,8 @@ export default function SettingsPage() {
             </section>
 
             {/* Customer Support & Access Section */}
-            <section className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-              <div className="flex items-center gap-3 mb-8">
+            <section className="bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm">
+              <div className="flex items-center gap-3 mb-6 md:mb-8">
                 <div className="h-10 w-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600">
                   <Bell className="h-5 w-5" />
                 </div>
@@ -154,29 +154,29 @@ export default function SettingsPage() {
               </div>
 
               <div className="mt-6 pt-6 border-t border-slate-100 space-y-4">
-                <div className="flex justify-between items-center text-xs">
+                <div className="flex flex-col sm:flex-row justify-between sm:items-center text-xs gap-1 sm:gap-4">
                   <span className="font-bold text-slate-400">Support Email</span>
-                  <span className="font-black text-slate-900 uppercase">support@alloinventory.com</span>
+                  <span className="font-black text-slate-900 uppercase break-all">support@alloinventory.com</span>
                 </div>
-                <div className="flex justify-between items-center text-xs">
+                <div className="flex flex-col sm:flex-row justify-between sm:items-center text-xs gap-1 sm:gap-4">
                   <span className="font-bold text-slate-400">Documentation</span>
                   <span className="font-black text-indigo-600 uppercase cursor-pointer hover:underline">View Knowledge Base</span>
                 </div>
-                <div className="flex justify-between items-center text-xs">
+                <div className="flex flex-col sm:flex-row justify-between sm:items-center text-xs gap-1 sm:gap-4">
                   <span className="font-bold text-slate-400">Support Access ID</span>
                   <span className="font-black text-slate-900 uppercase">#ALLO-8829-PX</span>
                 </div>
               </div>
             </section>
 
-            <div className="flex justify-end gap-4 mt-4">
-              <Button variant="ghost" className="rounded-xl px-8 h-12 font-black text-xs tracking-widest text-slate-500 hover:bg-slate-100">
+            <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 mt-4">
+              <Button variant="ghost" className="rounded-xl px-8 h-12 font-black text-xs tracking-widest text-slate-500 hover:bg-slate-100 w-full sm:w-auto">
                 DISCARD CHANGES
               </Button>
               <Button 
                 onClick={handleSave}
                 isLoading={isSaving}
-                className="rounded-xl px-12 h-12 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs tracking-widest shadow-xl shadow-indigo-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="rounded-xl px-12 h-12 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs tracking-widest shadow-xl shadow-indigo-500/30 transition-all hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto"
               >
                 SAVE CONFIGURATION
               </Button>
@@ -185,5 +185,6 @@ export default function SettingsPage() {
         </div>
       </main>
     </div>
+
   );
 }

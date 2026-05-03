@@ -80,16 +80,16 @@ function ReservationsSkeleton() {
 
 export default async function ReservationsPage() {
   return (
-    <div className="flex min-h-[calc(100vh-4rem)]">
+    <div className="flex flex-col md:flex-row min-h-[calc(100vh-4rem)]">
       <Sidebar />
-      <main className="flex-1 p-8 lg:p-12 bg-[#f8f9fc]">
+      <main className="flex-1 p-6 md:p-8 lg:p-12 bg-[#f8f9fc]">
         <div className="max-w-6xl mx-auto animate-page-in">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div>
-              <h1 className="text-3xl font-black text-slate-900 tracking-tight">
+              <h1 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
                 Reservations Dashboard
               </h1>
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-xs md:text-sm text-slate-500 mt-1">
                 Live monitoring of all atomic locks across the global network.
               </p>
             </div>
