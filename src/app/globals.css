@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+
+  --color-background: oklch(0.98 0.01 233.22);
+  --color-foreground: oklch(0.21 0.03 264.7);
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.21 0.03 264.7);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.21 0.03 264.7);
+  --color-primary: oklch(0.6 0.17 252.42);
+  --color-primary-foreground: oklch(0.98 0.01 233.22);
+  --color-secondary: oklch(0.96 0.01 233.22);
+  --color-secondary-foreground: oklch(0.21 0.03 264.7);
+  --color-muted: oklch(0.96 0.01 233.22);
+  --color-muted-foreground: oklch(0.55 0.03 240.69);
+  --color-accent: oklch(0.96 0.01 233.22);
+  --color-accent-foreground: oklch(0.21 0.03 264.7);
+  --color-destructive: oklch(0.64 0.22 25.72);
+  --color-destructive-foreground: oklch(0.98 0.01 233.22);
+  --color-border: oklch(0.92 0.01 226.49);
+  --color-input: oklch(0.92 0.01 226.49);
+  --color-ring: oklch(0.6 0.17 252.42);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    @apply font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  }
+
+  .glass-dark {
+    @apply bg-slate-900/70 backdrop-blur-md border border-slate-800/50 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+  }
+
+  .premium-card {
+    @apply bg-white rounded-3xl border border-slate-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-1;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-primary to-indigo-600;
+  }
+
+  .animate-in {
+    animation: fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0)
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+
