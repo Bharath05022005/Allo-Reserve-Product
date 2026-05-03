@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { releaseExpiredReservations } from "@/services/reservation.service";
 
 /**
- * Cron cleanup endpoint — called every minute by Vercel Cron.
+ * Cron cleanup endpoint — called daily by Vercel Cron (Hobby plan limit).
  *
  * EXPIRY STRATEGY: Cron-based cleanup (primary approach)
  * ──────────────────────────────────────────────────────

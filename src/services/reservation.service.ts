@@ -384,7 +384,7 @@ export async function releaseReservation(
  *
  * EXPIRY STRATEGY: Dual approach
  * ─────────────────────────────
- * 1. CRON (primary): GET /api/cron/cleanup runs every minute via Vercel Cron.
+ * 1. CRON (primary): GET /api/cron/cleanup runs daily via Vercel Cron.
  *    This is the authoritative cleanup and handles bulk expiry efficiently.
  *
  * 2. LAZY (fallback): Called at the top of getProducts() and confirmReservation().
