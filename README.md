@@ -4,7 +4,7 @@ A robust inventory management and product reservation system built with Next.js.
 
 🔗 Live Application
 
-Live URL: https://allo-reserve-product.vercel.app
+Live URL: https://allo-reserve-product-a29p.vercel.app/
 
 ✨ Features
 
