@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { releaseExpiredReservations } from "@/services/reservation.service";
 
 /**
- * Cron cleanup endpoint — called every 5 minutes by Vercel Cron.
+ * Cron cleanup endpoint — called every minute by Vercel Cron.
  *
  * EXPIRY STRATEGY: Cron-based cleanup (primary approach)
  * ──────────────────────────────────────────────────────
@@ -12,13 +12,18 @@ import { releaseExpiredReservations } from "@/services/reservation.service";
  * This ensures expired reservations are released even if the lazy cleanup
  * in getProducts() is not triggered (e.g., during low-traffic periods).
  */
-export async function POST(request: NextRequest) {
-  // Verify the request is from Vercel Cron (or an authorized caller)
+export async function GET(request: NextRequest) {
+  // Verify the request is from Vercel Cron
   const authHeader = request.headers.get("authorization");
   const expectedSecret = `Bearer ${process.env.CRON_SECRET}`;
 
-  if (authHeader !== expectedSecret) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  // In production, we MUST have a secret and it MUST match.
+  // In development, we allow bypass if no secret is configured.
+  const isProd = process.env.NODE_ENV === "production";
+  if (isProd || (process.env.CRON_SECRET && authHeader)) {
+    if (authHeader !== expectedSecret) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
   }
 
   try {
@@ -37,11 +42,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Also allow GET for manual triggering in development
-export async function GET(request: NextRequest) {
-  if (process.env.NODE_ENV !== "development") {
-    return NextResponse.json({ error: "Not allowed" }, { status: 405 });
-  }
-  const released = await releaseExpiredReservations();
-  return NextResponse.json({ releasedCount: released });
+// Also allow POST for manual triggering if needed
+export async function POST(request: NextRequest) {
+  return GET(request);
 }
